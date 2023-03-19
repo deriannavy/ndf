@@ -1,0 +1,9 @@
+--\set PROMPT1 '%~%x%#'
+\x auto
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+\setenv EDITOR vim
+
+\pset null '¤'
+\pset linestyle 'unicode'
+set intervalstyle to 'postgres_verbose';

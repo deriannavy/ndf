@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+# Libs from brew
+# bat
+# tree
+# fzf
+
+install_folders(){
+   ROOT="Disco"
+   [ -d "$HOME/$ROOT" ] && console 1 "Disco exist" && return
+
+   
+   for d in Projects Temp
+   do
+      [ -d "$HOME/$ROOT/$d" ] && console 1 "$d exist in $ROOT" && continue
+      mkdir -p "$HOME/$ROOT/$d"
+   done
+
+}
+
+install_dotfiles(){
+   test -f "$HOME/.zshrc" || ( console 1 ".zshrc Does't exist" && return )
+   if [[ $( grep "source ~/.ndf/main" ~/.zshrc ) ]]; then
+      console 0 "already installed"
+   else
+      echo "[ -r \"$HOME/.DotFiles/main\" ] && source \"$HOME/.DotFiles/main\"" >> "$HOME/.zshrc"
+      source ~/.ndf/main
+      install_folders
+      console 4 "installed successfully"
+   fi         
+}
+
+

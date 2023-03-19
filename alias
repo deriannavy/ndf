@@ -1,0 +1,41 @@
+#!/bin/zsh
+
+# Git Alias
+alias .git_f="[ -d .git ]"
+alias .git_msg="console 2 'Not .git folder'"
+alias a=".git_f && git add"
+alias al=".git_f && git add . || .git_msg"
+alias s=".git_f && git status -s || .git_msg"
+alias d=".git_f && git diff"
+alias b=".git_f && git branch"
+alias cm=".git_f && git commit -m"
+alias ca=".git_f && git add . && git commit -m"
+alias c=".git_f && git checkout"
+alias cl="git clone"
+alias pll=".git_f && git pull origin"
+alias psh=".git_f && git push origin"
+alias st=".git_f && git stash || .git_msg"
+alias sta=".git_f && git stash apply || .git_msg"
+
+# Utils Aliases
+alias p="pwd"
+alias l="ls -ACGFl"
+alias g="grep -rni"
+alias z="clear"
+alias v="fzf | xargs -o $EDITOR"
+alias tr="tree"
+alias f="fzf"
+alias e="exit"
+alias t="tmux -f ~/.ndt/config/.tmux.conf"
+alias tl="tmux list-sessions"
+alias tk="tmux kill-session -a"
+alias wi="which"
+
+# Moving Aliases
+alias ,="cd -"
+alias .="cd ~/.dotfiles"
+alias ..="cd .."
+alias ds="cd ~/Desktop" 
+alias dc="cd ~/Disco"
+alias dp="cd ~/Disco/Projects"
+alias dt="cd ~/Disco/Temp"

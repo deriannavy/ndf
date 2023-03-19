@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/diez/Disco/Working/Elixir/Projects/finanzas'
+let g:netrw_dirhist_4='/Users/diez/Disco/Working/Elixir/Projects/finanzas/config'
+let g:netrw_dirhist_3='/Users/diez/Disco/Working/Elixir/Projects/finanzas'
+let g:netrw_dirhist_2='/Users/diez/Disco/Working/Elixir/Projects/finanzas/config'
+let g:netrw_dirhist_1='/Users/diez/Disco/Working/Elixir/Projects/finanzas/assets'
+let g:netrw_dirhist_0='/Users/diez/Disco/Working/Elixir/Projects/finanzas/deps'
+let g:netrw_dirhist_9='/Users/diez/Disco/Working/Elixir/Projects/finanzas/lib'
+let g:netrw_dirhist_8='/Users/diez/Disco/Working/Elixir/Projects/finanzas/priv'
+let g:netrw_dirhist_7='/Users/diez/Disco/Working/Elixir/Projects/finanzas'
+let g:netrw_dirhist_6='/Users/diez/Disco/Working/JS/Projects/documentation'

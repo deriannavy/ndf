@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+
+# Update vimrc config file
+crv(){
+   cp "$HOME/.ndf/config/.vimrc" "$HOME/.vimrc"
+   console 0 ".vimrc updated"
+}

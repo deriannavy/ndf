@@ -1,0 +1,82 @@
+#!/bin/zsh
+
+# Console
+console(){
+   COLOR=""
+   MSG=""
+   case $1 in
+      0)
+         COLOR="blue"
+         MSG="INFO"
+      ;;
+      1)
+         COLOR="red"
+         MSG="ERROR"
+      ;;
+      2)
+         COLOR="yellow"
+         MSG="WARNING"
+      ;;
+      3)
+         COLOR="magenta"
+         MSG="EXECUTION"
+      ;;
+      4)
+         COLOR="green"
+         MSG="SUCCESS"
+      ;;
+      *)
+         COLOR="grey"
+         MSG="?"
+      ;;
+   esac
+
+   TAG="⁅ $fg_bold[$COLOR]$MSG$reset_color ⁆"
+   echo -e "\n$TAG › $2\n"
+}
+
+
+# Console
+console_line(){
+   COLOR=""
+   MSG=""
+   COUNT=0
+   case $1 in
+      0)
+         COLOR="blue"
+         MSG="INFO"
+         COUNT=14
+      ;;
+      1)
+         COLOR="red"
+         MSG="ERROR"
+         COUNT=15
+      ;;
+      2)
+         COLOR="yellow"
+         MSG="WARNING"
+         COUNT=17
+      ;;
+      3)
+         COLOR="magenta"
+         MSG="EXECUTION"
+      ;;
+      4)
+         COLOR="green"
+         MSG="SUCCESS"
+      ;;
+      *)
+         COLOR="grey"
+         MSG="?"
+         COUNT=1
+      ;;
+   esac
+
+   TAG="⁅ $fg_bold[$COLOR]$MSG$reset_color ⁆"
+   MESSAGE="------------------------------ ‹ $TAG › ------------------------------"
+   DASH=$(printf "%-$((COUNT+60))s" "")
+   echo -e "\n  $MESSAGE  "
+   echo "  »  $2  "
+   echo -e "  ${DASH// /-} \n"
+}
+

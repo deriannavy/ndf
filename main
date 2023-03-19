@@ -1,0 +1,59 @@
+#!/bin/zsh
+
+# Personalization
+autoload -U colors && colors
+set -o PROMPT_SUBST
+bindkey -v
+# autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)
+
+# Exporting Variables
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='0;31;20'
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export FZF_DEFAULT_OPTS="
+   --layout=reverse
+   --height=40%
+   --prompt='~ '
+   --pointer='→'
+   --marker='✓'
+   --multi
+   --cycle
+   --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+   --preview-window=:hidden
+   --bind '?:toggle-preview'
+"
+
+alias cr="source ~/.zshrc && console 0 Updating..." 
+
+# Save git changes and send
+pshdot(){
+   DT=`date '+%F_%H:%M:%S'`
+   cd ~/.ndf/
+   git add .
+   git commit -m "Automatic Update $DT"
+   git push origin
+}
+
+# PS1
+project_path(){
+   LASTF=${PWD##*/}
+   CBRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+   BRANCH=$([ -n "$CBRANCH" ] && echo "%{$reset_color%} → %{$fg_bold[magenta]%}$CBRANCH" || echo  )
+   if [[ $PWD == $HOME/Disco/Projects/* ]] ; then
+        PRO=${PWD##*/Projects/} STR=${PRO%%/*} 
+        echo "Diez ‣ [%{$fg_bold[red]%}$STR$BRANCH%{$reset_color%}]$([[ $LASTF == $STR ]] && echo || echo " %1~" )%"
+     else
+        echo "Diez » %{$fg_bold[red]%}%1~%{$reset_color%}$BRANCH%{$reset_color%}%"
+   fi
+}
+
+
+PS1='$(project_path)  $› '
+
+# Importing Aliases
+for i in ~/.ndf/aliases ~/.ndf/functions/*; do source "$i"; done

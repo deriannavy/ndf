@@ -1,0 +1,5 @@
+
+Host sirius
+HostName 192.168.1.4
+User sirius
+IdentityFile ~/.ssh/sirius
