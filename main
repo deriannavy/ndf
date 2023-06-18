@@ -56,4 +56,4 @@ project_path(){
 PS1='$(project_path)  $› '
 
 # Importing Aliases
-for i in ~/.ndf/aliases ~/.ndf/functions/*; do source "$i"; done
+for i in ~/.ndf/alias ~/.ndf/functions/*; do source "$i"; done
