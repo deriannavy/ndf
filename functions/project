@@ -1,0 +1,47 @@
+#!/bin/zsh
+
+# Projects Functions
+
+# Jump Project
+cdp(){
+     cd ~/Projects/"$1"/
+}
+
+# List Projects And Categories
+pro(){
+   Q=""
+   if [ "$#" -eq 1 ]; then 
+      Q="-q $1"
+   fi
+
+   ROUTE=$(\
+          find ~/Projects -mindepth 1 -maxdepth 1 -type d | \
+          awk -F'/' '{print $5 }' | \
+          fzf --select-1 $Q | \
+          awk -F' → ' '{print "/Projects/"$1 }'
+         )
+
+   echo "$ROUTE"
+   cd "$HOME$ROUTE"
+}
+
+
+# Create virtual enviroment
+pv(){
+   if [ -f "pyvenv.cfg" ]; then
+      source bin/activate
+   else
+      [ "$#" -eq 0 ] && console 1 "Need for a name" && return
+      virtualenv -p python3 $1 
+   fi 
+}
+
+# Save and push git changes
+psha(){
+   [ ! -d .git ] && .git_msg && return  
+   DT=`date '+%F_%H:%M:%S'`
+   git add .
+   git commit -m "Automatic Update $DT"
+   git push origin
+}
+

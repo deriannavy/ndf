@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# Libs from brew
+# bat
+# tree
+# fzf
+
 # Personalization
 autoload -U colors && colors
 set -o PROMPT_SUBST
@@ -29,6 +34,11 @@ export FZF_DEFAULT_OPTS="
 "
 
 alias cr="source ~/.zshrc && console 0 Updating..." 
+
+# Open application
+ap(){
+    open "$(ls -lrtG -d -1 /Applications/* | fzf )"
+}
 
 # Save git changes and send
 pshdot(){
