@@ -2,6 +2,11 @@
 
 # Projects Functions
 
+
+# SSH Hosts
+sf(){
+   ssh $(cat ~/.ssh/config | grep Host | grep -v Hostname | awk '{ print $2 }' | fzf )
+}
 # Jump Project
 cdp(){
      cd ~/Projects/"$1"/

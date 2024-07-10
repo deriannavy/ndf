@@ -5,6 +5,7 @@
 # tree
 # fzf
 
+export PATH=/Applications/Postgres.app/Contents/Versions/16/bin:$PATH
 # Personalization
 autoload -U colors && colors
 set -o PROMPT_SUBST
