@@ -1,6 +1,34 @@
 #!/bin/zsh
 
 # Console
+console_inline(){
+   COLOR=""
+   case $1 in
+      0)
+         COLOR="blue"
+      ;;
+      1)
+         COLOR="red"
+      ;;
+      2)
+         COLOR="yellow"
+      ;;
+      3)
+         COLOR="magenta"
+      ;;
+      4)
+         COLOR="green"
+      ;;
+      *)
+         COLOR="grey"
+      ;;
+   esac
+
+   TAG="⁅ $fg_bold[$COLOR]$2$reset_color ⁆"
+   echo "$TAG › $3"
+}
+
+# Console
 console(){
    COLOR=""
    MSG=""
