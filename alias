@@ -38,3 +38,6 @@ alias ..="cd .."
 alias ds="cd ~/Desktop" 
 alias dp="cd ~/Projects"
 alias dt="cd ~/Temp"
+
+# Docker
+alias dbu="docker compose up --build -d"

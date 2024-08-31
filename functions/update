@@ -1,6 +1,10 @@
 #!/bin/zsh
 
 
+v.(){
+   . && v
+}
+
 # Update vimrc config file
 crv(){
    cp "$HOME/.ndf/config/.vimrc" "$HOME/.vimrc"

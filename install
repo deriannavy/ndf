@@ -4,7 +4,7 @@
 # bat
 # tree
 # fzf
-
+# /opt/homebrew/bin/tmux -f /Users/diez/.ndf/config/.tmux.conf
 install_folders(){
    ROOT="Disco"
    [ -d "$HOME/$ROOT" ] && console 1 "Disco exist" && return

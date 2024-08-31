@@ -50,3 +50,7 @@ psha(){
    git push origin
 }
 
+# Scan git status
+gscan(){
+
+}
