@@ -33,11 +33,12 @@ pro(){
 
 # Create virtual enviroment
 pv(){
-   if [ -f "pyvenv.cfg" ]; then
-      source bin/activate
+   if [ -d "venv" ]; then
+      source venv/bin/activate
    else
-      [ "$#" -eq 0 ] && console 1 "Need for a name" && return
-      virtualenv -p python3 $1 
+      #[ "$#" -eq 0 ] && console 1 "Need for a name" && return
+      #virtualenv -p python3 $1 
+      python3 -m venv venv
    fi 
 }
 
