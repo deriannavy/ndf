@@ -52,9 +52,10 @@ psha(){
 
 # Scan git status
 gscan(){
+   echo ""
    for i in $(ls -lrtG -d -1 *); do 
       GST=$(git -C $i status -s 2>/dev/null)
-      if (($? > 0)); then
+     if (($? > 0)); then
          console_inline 2 $i "No git"
          continue
       fi    
@@ -63,6 +64,6 @@ gscan(){
       else
          console_inline 1 $i "Push"
       fi
-     
    done
+   echo ""
 }
