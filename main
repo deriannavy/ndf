@@ -55,11 +55,12 @@ project_path(){
    LASTF=${PWD##*/}
    CBRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
    BRANCH=$([ -n "$CBRANCH" ] && echo "%{$reset_color%} → %{$fg_bold[magenta]%}$CBRANCH" || echo  )
+   TIME="%{$fg[yellow]%}$(date +%H.%M)%{$reset_color%}"
    if [[ $PWD == $HOME/Disco/Projects/* ]] ; then
         PRO=${PWD##*/Projects/} STR=${PRO%%/*} 
-        echo "Diez ‣ [%{$fg_bold[red]%}$STR$BRANCH%{$reset_color%}]$([[ $LASTF == $STR ]] && echo || echo " %1~" )%"
+        echo "$TIME Diez ‣ [%{$fg_bold[red]%}$STR$BRANCH%{$reset_color%}]$([[ $LASTF == $STR ]] && echo || echo " %1~" )%"
      else
-        echo "Diez » %{$fg_bold[red]%}%1~%{$reset_color%}$BRANCH%{$reset_color%}%"
+        echo "$TIME Diez » %{$fg_bold[red]%}%1~%{$reset_color%}$BRANCH%{$reset_color%}%"
    fi
 }
 
