@@ -12,6 +12,14 @@ cdp(){
      cd ~/Projects/"$1"/
 }
 
+dbu(){
+   F="compose.yml"
+   if [ "$#" -eq 1 ]; then 
+      F=$1
+   fi
+
+   docker compose -f $F up --build -d
+}
 # List Projects And Categories
 pro(){
    Q=""
@@ -48,7 +56,11 @@ psha(){
    DT=`date '+%F_%H:%M:%S'`
    git add .
    git commit -m "Automatic Update $DT"
-   git push origin
+   BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+   console_inline 5 "GIT" "Actualizando $BRANCH"
+   sleep 2
+   
+   git push origin $BRANCH
 }
 
 # Scan git status
