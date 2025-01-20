@@ -55,9 +55,13 @@ psha(){
    [ ! -d .git ] && .git_msg && return  
    DT=`date '+%F_%H:%M:%S'`
    git add .
-   git commit -m "Automatic Update $DT"
+   MESSAGE="Automatic Update $DT" 
+   if [ "$#" -eq 1 ]; then
+      MESSAGE="$1"
+   fi
+   git commit -m $MESSAGE
    BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
-   console_inline 5 "GIT" "Actualizando $BRANCH"
+   console_inline 5 "GIT" "Actualizando $BRANCH >> $MESSAGE"
    sleep 2
    
    git push origin $BRANCH

@@ -46,7 +46,12 @@ pshdot(){
    DT=`date '+%F_%H:%M:%S'`
    cd ~/.ndf/
    git add .
-   git commit -m "Automatic Update $DT"
+   MESSAGE="Automatic Update $DT" 
+   if [ "$#" -eq 1 ]; then 
+      MESSAGE="$1"
+   fi
+
+   git commit -m $MESSAGE
    git push origin
 }
 
