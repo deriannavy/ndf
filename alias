@@ -30,6 +30,7 @@ alias t="tmux -f ~/.ndf/config/.tmux.conf"
 alias tl="tmux list-sessions"
 alias tk="tmux kill-session -a"
 alias wi="which"
+alias m="make"
 
 # Moving Aliases
 alias ,="cd -"
