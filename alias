@@ -40,3 +40,5 @@ alias ds="cd ~/Desktop"
 alias dp="cd ~/Projects"
 alias dt="cd ~/Temp"
 
+# Programs
+alias tf="terraform"
