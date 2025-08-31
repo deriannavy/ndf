@@ -63,7 +63,7 @@ psha(){
    fi
    git commit -m $MESSAGE
    BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
-   console_inline 5 "GIT" "Actualizando $fg_bold[red]$BRANCH$reset_color >> $MESSAGE"
+   console_inline 5 "GIT" "Actualizando {$fg_bold[grey]$BRANCH$reset_color} >> $MESSAGE"
    sleep 2
    
    git push origin $BRANCH
