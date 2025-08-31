@@ -41,11 +41,13 @@ pro(){
 
 # Create virtual enviroment
 pv(){
-   if [ -d "venv" ]; then
+   if [ -d "venv" ]; then  
+      console_inline 5 "PYTHON" "Activando entorno virtual"
       source venv/bin/activate
    else
       #[ "$#" -eq 0 ] && console 1 "Need for a name" && return
       #virtualenv -p python3 $1 
+      console_inline 5 "PYTHON" "Creando entorno virtual"
       python3 -m venv venv
    fi 
 }
@@ -61,7 +63,7 @@ psha(){
    fi
    git commit -m $MESSAGE
    BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
-   console_inline 5 "GIT" "Actualizando $BRANCH >> $MESSAGE"
+   console_inline 5 "GIT" "Actualizando $fg_bold[yellow]$BRANCH$reset_color >> $MESSAGE"
    sleep 2
    
    git push origin $BRANCH
@@ -81,6 +83,21 @@ gscan(){
       else
          console_inline 1 $i "Push"
       fi
+   done
+   echo ""
+}
+
+# Scan remote origins
+gscano(){
+   echo ""
+   for i in $(ls -lrtG -d -1 *); do 
+      GST=$(git -C $i status -s 2>/dev/null)
+     if (($? > 0)); then
+         console_inline 2 $i "No git"
+         continue
+      fi    
+      ORI=$(git remote origin get-url)
+      console_inline 2 $i $ORI
    done
    echo ""
 }
