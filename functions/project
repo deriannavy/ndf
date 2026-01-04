@@ -49,6 +49,7 @@ pv(){
       #virtualenv -p python3 $1 
       console_inline 5 "PYTHON" "Creando entorno virtual"
       python3 -m venv venv
+      source venv/bin/activate
    fi 
 }
 
