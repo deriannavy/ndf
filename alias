@@ -42,3 +42,6 @@ alias dt="cd ~/Temp"
 
 # Programs
 alias tf="terraform"
+
+# Tmp
+alias show_commands="cat ./txt/commands.txt"

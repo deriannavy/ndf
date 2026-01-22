@@ -1,0 +1,3 @@
+terraform init -backend-config=<fileroute>
+terraform plan -var-file="<fileroute>"
+terraform plan -var-file="<fileroute>" -destroy -target=module.network
