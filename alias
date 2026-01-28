@@ -44,4 +44,4 @@ alias dt="cd ~/Temp"
 alias tf="terraform"
 
 # Tmp
-alias show_commands="cat ./txt/commands.txt"
+alias his="cat ./txt/commands.txt"
