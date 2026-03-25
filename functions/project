@@ -98,7 +98,7 @@ gscano(){
          console_inline 2 $i "No git"
          continue
       fi    
-      ORI=$(git remote origin get-url)
+      ORI=$(git -C $i remote get-url origin)
       console_inline 2 $i $ORI
    done
    echo ""
