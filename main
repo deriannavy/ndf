@@ -1,16 +1,11 @@
 #!/bin/zsh
 
-# Libs from brew
-# bat
-# tree
-# fzf
-
 # Personalization
 autoload -U colors && colors
 set -o PROMPT_SUBST
 bindkey -v
 bindkey '^R' history-incremental-search-backward
-# autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)
@@ -18,7 +13,6 @@ _comp_options+=(globdots)
 # Exporting Variables
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='0;31;20'
-
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export FZF_DEFAULT_OPTS="
@@ -34,6 +28,7 @@ export FZF_DEFAULT_OPTS="
    --bind '?:toggle-preview'
 "
 
+# Refresh profile
 alias cr="source ~/.zshrc && console 0 Updated..." 
 
 # Open application
@@ -61,14 +56,13 @@ project_path(){
    CBRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
    BRANCH=$([ -n "$CBRANCH" ] && echo "%{$reset_color%} → %{$fg_bold[magenta]%}$CBRANCH" || echo  )
    TIME="%{$fg[yellow]%}$(date +%H.%M)%{$reset_color%}"
-   if [[ $PWD == $HOME/Disco/Projects/* ]] ; then
+   if [[ $PWD == $HOME/Projects/* ]] ; then
         PRO=${PWD##*/Projects/} STR=${PRO%%/*} 
         echo "$TIME Diez ‣ [%{$fg_bold[red]%}$STR$BRANCH%{$reset_color%}]$([[ $LASTF == $STR ]] && echo || echo " %1~" )%"
      else
         echo "$TIME Diez » %{$fg_bold[red]%}%1~%{$reset_color%}$BRANCH%{$reset_color%}%"
    fi
 }
-
 
 PS1='$(project_path)  $› '
 
