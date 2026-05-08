@@ -20,11 +20,11 @@ install_folders(){
 
 install_dotfiles(){
    test -f "$HOME/.zshrc" || ( console 1 ".zshrc Does't exist" && return )
-   if [[ $( grep "source ~/.ndf/main" ~/.zshrc ) ]]; then
+   if [[ $( grep "source ~/.ndf/zsh/main" ~/.zshrc ) ]]; then
       console 0 "already installed"
    else
-      echo "[ -r \"$HOME/.DotFiles/main\" ] && source \"$HOME/.DotFiles/main\"" >> "$HOME/.zshrc"
-      source ~/.ndf/main
+      echo "[ -r \"$HOME/.ndf/zsh/main\" ] && source \"$HOME/.ndf/zsh/main\"" >> "$HOME/.zshrc"
+      source ~/.ndf/zsh/main
       install_folders
       console 4 "installed successfully"
    fi         
