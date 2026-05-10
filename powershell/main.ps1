@@ -1,10 +1,9 @@
 
 # Refresh profile
 function Reload-Profile {
-    #TODO: ACTUALIZAR CONSOLE
-    Write-Host "Updated..." -ForegroundColor Red -NoNewline
-     & pwsh -NoExit -Command "Set-Location -Path $(Get-Location)"
-     exit
+    console 0 "Updated..."
+    & pwsh -NoExit -Command "Set-Location -Path $(Get-Location)"
+    exit
 
 }
 
@@ -48,4 +47,6 @@ function prompt {
 }
 
 # Importing Aliases
-# 1..5 | ForEach-Object { $_ * 2 }
+foreach ($file in @("$HOME\.ndf\powershell\alias.ps1") + (Get-ChildItem "$HOME\.ndf\powershell\functions\*")) {
+    . $file
+}
