@@ -4,3 +4,7 @@ terraform plan -var-file="<fileroute>" -destroy -target=module.network
 curl http://127.0.0.1:1234/v1/register -v -H "Content-Type: application/json" -d '{"email": "", "password": ""}'
 curl http://127.0.0.1:1234/v1/account -v -X GET --cookie "access_token=jwtcookie:)"
 psql -U develop -p 5433 -d general
+docker build -t (repo):(label) .
+docker tag (repo):(label) (registry):(puerto)/(usuario)/(repo)
+docker push (registry):(puerto)/(usuario)/(repo)
+(registry):(puerto)/(usuario)/(repo):(tag normalmente latest)
