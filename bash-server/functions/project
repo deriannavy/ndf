@@ -1,0 +1,105 @@
+# #!/bin/zsh
+
+# # Projects Functions
+
+
+# # SSH Hosts
+# sf(){
+#    ssh $(cat ~/.ssh/config | grep Host | grep -v Hostname | awk '{ print $2 }' | fzf )
+# }
+# # Jump Project
+# cdp(){
+#      cd ~/Projects/"$1"/
+# }
+
+# dbu(){
+#    F="compose.yml"
+#    if [ "$#" -eq 1 ]; then 
+#       F=$1
+#    fi
+
+#    docker compose -f $F up --build -d
+# }
+# # List Projects And Categories
+# pro(){
+#    Q=""
+#    if [ "$#" -eq 1 ]; then 
+#       Q="-q $1"
+#    fi
+
+#    ROUTE=$(\
+#           find ~/Projects -mindepth 1 -maxdepth 1 -type d | \
+#           awk -F'/' '{print $5 }' | \
+#           fzf --select-1 $Q | \
+#           awk -F' → ' '{print "/Projects/"$1 }'
+#          )
+
+#    echo "$ROUTE"
+#    cd "$HOME$ROUTE"
+# }
+
+
+# # Create virtual enviroment
+# pv(){
+#    if [ -d "venv" ]; then  
+#       console_inline 5 "PYTHON" "Activando entorno virtual"
+#       source venv/bin/activate
+#    else
+#       #[ "$#" -eq 0 ] && console 1 "Need for a name" && return
+#       #virtualenv -p python3 $1 
+#       console_inline 5 "PYTHON" "Creando entorno virtual"
+#       python3 -m venv venv
+#       source venv/bin/activate
+#    fi 
+# }
+
+# # Save and push git changes
+# psha(){
+#    [ ! -d .git ] && .git_msg && return  
+#    DT=`date '+%F_%H:%M:%S'`
+#    git add .
+#    MESSAGE="Automatic Update $DT" 
+#    if [ "$#" -eq 1 ]; then
+#       MESSAGE="$1"
+#    fi
+#    git commit -m $MESSAGE
+#    BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+#    console_inline 5 "GIT" "Actualizando {$fg_bold[grey]$BRANCH$reset_color}"
+#    console_inline 5 "GIT" "$MESSAGE"
+#    sleep 2
+   
+#    git push origin $BRANCH
+# }
+
+# # Scan git status
+# gscan(){
+#    echo ""
+#    for i in $(ls -lrtG -d -1 *); do 
+#       GST=$(git -C $i status -s 2>/dev/null)
+#      if (($? > 0)); then
+#          console_inline 2 $i "No git"
+#          continue
+#       fi    
+#       if [[ $GST == "" ]]; then
+#          continue
+#       else
+#          console_inline 1 $i "Push"
+#       fi
+#    done
+#    echo ""
+# }
+
+# # Scan remote origins
+# gscano(){
+#    echo ""
+#    for i in $(ls -lrtG -d -1 *); do 
+#       GST=$(git -C $i status -s 2>/dev/null)
+#      if (($? > 0)); then
+#          console_inline 2 $i "No git"
+#          continue
+#       fi    
+#       ORI=$(git -C $i remote get-url origin)
+#       console_inline 2 $i $ORI
+#    done
+#    echo ""
+# }
