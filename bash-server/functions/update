@@ -1,12 +1,12 @@
-# #!/bin/zsh
+#!/bin/bash
 
 
-# v.(){
-#    . && v
-# }
+v.(){
+   . && v
+}
 
-# # Update vimrc config file
-# crv(){
-#    cp "$HOME/.ndf/config/.vimrc" "$HOME/.vimrc"
-#    console 0 ".vimrc updated"
-# }
+# Update vimrc config file
+crv(){
+   cp "$HOME/.ndf/config/.vimrc" "$HOME/.vimrc"
+   console 0 ".vimrc updated"
+}
