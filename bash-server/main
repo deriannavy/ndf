@@ -63,13 +63,13 @@ project_path(){
    LASTF=${PWD##*/}
    CBRANCH=$(git branch --show-current 2>/dev/null)
    BRANCH="${CBRANCH:+${reset_color} → ${fg_bold[5]}${CBRANCH}}${reset_color}"
-   TIME="${fg[3]}$(date +%d.%H.%M)${reset_color}"
-   
+   TIME="${fg[2]}$(date +%d.%H.%M)${reset_color}"
+   HOSTUSER="$(whoami):$(hostname -s)"
    if [[ "$PWD" == "$HOME"/Projects/* ]]; then
         PRO=${PWD##*/Projects/} STR=${PRO%%/*}
-        echo -e "$TIME $(hostname -s) ‣ [${fg_bold[1]}$STR$BRANCH${reset_color}]$([[ "$LASTF" == "$STR" ]] && echo || echo " $LASTF")"
+        echo -e "$TIME $HOSTUSER ‣ [${fg_bold[1]}$STR$BRANCH${reset_color}]$([[ "$LASTF" == "$STR" ]] && echo || echo " $LASTF")"
      else
-        echo -e "$TIME $(hostname -s) » ${fg_bold[1]}$LASTF$BRANCH${reset_color}"
+        echo -e "$TIME $HOSTUSER » ${fg_bold[1]}$LASTF$BRANCH${reset_color}"
    fi
   
 }
