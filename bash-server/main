@@ -3,26 +3,9 @@
 
 # Colors
 reset_color='\033[00m'
-fg=(
-    '\033[00;30m'
-  	 '\033[00;31m'
-	 '\033[00;32m'
-	 '\033[00;33m'
-	 '\033[00;34m'
-	 '\033[00;35m'
-	 '\033[00;36m'
-	 '\033[00;37m'
-)
-fg_bold=(
-    '\033[01;30m' # black
-    '\033[01;31m' # red
-    '\033[01;32m' # green
-    '\033[01;33m' # yellow
-    '\033[01;34m' # blue
-    '\033[01;35m' # magenta
-    '\033[01;36m' # cyan
-    '\033[01;37m' # white
-)
+# black 0 - red 1 - green 2 - yellow 3 - blue 4 - magenta 5 - cyan 6 - white 
+fg=('\033[00;30m' '\033[00;31m' '\033[00;32m' '\033[00;33m' '\033[00;34m' '\033[00;35m' '\033[00;36m' '\033[00;37m')
+fg_bold=('\033[01;30m' '\033[01;31m' '\033[01;32m' '\033[01;33m' '\033[01;34m' '\033[01;35m' '\033[01;36m' '\033[01;37m')
 
 # Exporting Variables
 export VISUAL=vim
@@ -41,8 +24,7 @@ export FZF_DEFAULT_OPTS="
 "
 
 # Refresh profile
-# -----  alias cr="source ~/.bashrc && console 0 Updated..." 
-alias cr="source ~/.bashrc" 
+alias cr="source ~/.bashrc && console 0 Updated..." 
 
 # Save git changes and send
 pshdot(){
@@ -77,6 +59,5 @@ project_path(){
 PS1='$(project_path) \$› '
 
 # Importing Aliases
-# ----- ~/.ndf/zsh/functions/*
-for i in ~/.ndf/zsh/alias; do source "$i"; done
+for i in ~/.ndf/bash-server/alias ~/.ndf/bash-server/functions/*; do source "$i"; done
 

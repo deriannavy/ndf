@@ -1,65 +1,65 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Console
 console_inline(){
-   COLOR=""
+   COLOR=10
    case $1 in
       0)
-         COLOR="blue"
+         COLOR=4
       ;;
       1)
-         COLOR="red"
+         COLOR=1
       ;;
       2)
-         COLOR="yellow"
+         COLOR=3
       ;;
       3)
-         COLOR="magenta"
+         COLOR=5
       ;;
       4)
-         COLOR="green"
+         COLOR=2
       ;;
       *)
-         COLOR="grey"
+         COLOR=0
       ;;
    esac
 
-   TAG="⁅ $fg_bold[$COLOR]$2$reset_color ⁆"
-   echo "$TAG › $3"
+   TAG="⁅ ${fg_bold[COLOR]}$2$reset_color ⁆"
+   echo -e "$TAG › $3"
 }
 
 # Console
 console(){
-   COLOR=""
+   COLOR=10
    MSG=""
    case $1 in
       0)
-         COLOR="blue"
+         COLOR=4
          MSG="INFO"
       ;;
       1)
-         COLOR="red"
+         COLOR=1
          MSG="ERROR"
       ;;
       2)
-         COLOR="yellow"
+         COLOR=2
          MSG="WARNING"
       ;;
       3)
-         COLOR="magenta"
+         COLOR=5
          MSG="EXECUTION"
       ;;
       4)
-         COLOR="green"
+         COLOR=2
          MSG="SUCCESS"
       ;;
       *)
-         COLOR="grey"
+         COLOR=0
          MSG="?"
       ;;
    esac
 
-   TAG="⁅ $fg_bold[$COLOR]$MSG$reset_color ⁆"
+   TAG="⁅ ${fg_bold[COLOR]}$MSG$reset_color ⁆"
    echo -e "\n$TAG › $2\n"
 }
 
@@ -71,36 +71,36 @@ console_line(){
    COUNT=0
    case $1 in
       0)
-         COLOR="blue"
+         COLOR=4
          MSG="INFO"
          COUNT=14
       ;;
       1)
-         COLOR="red"
+         COLOR=1
          MSG="ERROR"
          COUNT=15
       ;;
       2)
-         COLOR="yellow"
+         COLOR=3
          MSG="WARNING"
          COUNT=17
       ;;
       3)
-         COLOR="magenta"
+         COLOR=5
          MSG="EXECUTION"
       ;;
       4)
-         COLOR="green"
+         COLOR=3
          MSG="SUCCESS"
       ;;
       *)
-         COLOR="grey"
+         COLOR=0
          MSG="?"
          COUNT=1
       ;;
    esac
 
-   TAG="⁅ $fg_bold[$COLOR]$MSG$reset_color ⁆"
+   TAG="⁅ ${fg_bold[COLOR]}$MSG$reset_color ⁆"
    MESSAGE="------------------------------ ‹ $TAG › ------------------------------"
    DASH=$(printf "%-$((COUNT+60))s" "")
    echo -e "\n  $MESSAGE  "
