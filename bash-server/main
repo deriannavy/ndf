@@ -43,15 +43,18 @@ pshdot(){
 # PS1
 project_path(){
    LASTF=${PWD##*/}
+   ruta_actual="${PWD/#$HOME/\~}"
    CBRANCH=$(git branch --show-current 2>/dev/null)
    BRANCH="${CBRANCH:+${reset_color} → ${fg_bold[5]}${CBRANCH}}${reset_color}"
    TIME="${fg[2]}$(date +%d.%H.%M)${reset_color}"
    HOSTUSER="$(whoami):${fg_bold[0]}$(hostname -s)${reset_color}"
-   if [[ "$PWD" == "$HOME"/Projects/* ]]; then
-        PRO=${PWD##*/Projects/} STR=${PRO%%/*}
-        echo -e "$TIME $HOSTUSER ‣ [${fg_bold[1]}$STR$BRANCH${reset_color}]$([[ "$LASTF" == "$STR" ]] && echo || echo " $LASTF")"
-     else
-        echo -e "$TIME $HOSTUSER » ${fg_bold[1]}$LASTF$BRANCH${reset_color}"
+   if [ "$PWD" = "$HOME" ]; then
+      echo -e "$TIME $HOSTUSER » ${fg_bold[1]}~$BRANCH${reset_color}"
+   elif  [[ "$PWD" == "$HOME"/Projects/* ]]; then
+      PRO=${PWD##*/Projects/} STR=${PRO%%/*}
+      echo -e "$TIME $HOSTUSER ‣ [${fg_bold[1]}$STR$BRANCH${reset_color}]$([[ "$LASTF" == "$STR" ]] && echo || echo " $LASTF")"
+   else
+      echo -e "$TIME $HOSTUSER » ${fg_bold[1]}$LASTF$BRANCH${reset_color}"
    fi
   
 }

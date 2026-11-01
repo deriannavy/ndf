@@ -42,7 +42,7 @@ console(){
          MSG="ERROR"
       ;;
       2)
-         COLOR=2
+         COLOR=3
          MSG="WARNING"
       ;;
       3)
